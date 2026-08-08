@@ -18,9 +18,10 @@ import { eq, desc, count, sql, and } from 'drizzle-orm';
 import { requireAuth, AuthRequest } from './src/middleware/auth.ts';
 import { serverAiService } from './src/services/serverAiService.ts';
 
+const app = express();
+const PORT = 3000;
+
 async function startServer() {
-  const app = express();
-  const PORT = 3000;
 
   app.use(express.json());
 
@@ -1709,9 +1710,13 @@ async function startServer() {
     });
   }
 
+  if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on http://0.0.0.0:${PORT}`);
   });
 }
+}
 
 startServer();
+
+export default app;
