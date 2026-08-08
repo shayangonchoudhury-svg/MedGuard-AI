@@ -2,7 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
-import { db } from './src/db/index.ts';
+import { db } from './src/db/index.js';
 import {
   equipment,
   maintenance,
@@ -13,10 +13,10 @@ import {
   users,
   aiActivities,
   aiAnalyses
-} from './src/db/schema.ts';
+} from './src/db/schema.js';
 import { eq, desc, count, sql, and } from 'drizzle-orm';
-import { requireAuth, AuthRequest } from './src/middleware/auth.ts';
-import { serverAiService } from './src/services/serverAiService.ts';
+import { requireAuth, AuthRequest } from './src/middleware/auth.js';
+import { serverAiService } from './src/services/serverAiService.js';
 
 const app = express();
 const PORT = 3000;
